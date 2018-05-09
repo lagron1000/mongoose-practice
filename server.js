@@ -31,7 +31,7 @@ for (var i = 0; i < isbns.length; i++) {
   for subsequent runs, re-comment it so that it runs only once!
   that said, there is a fail-safe to avoid duplicates below  
   =======================================================*/
-  loadFromAPI(apiURL)
+  // loadFromAPI(apiURL)
 }
 console.log("done");
 
@@ -147,20 +147,91 @@ and your server is running do the following:
 /*Books
 ----------------------*/
 //1. Find books with fewer than 500 but more than 200 pages
+// Book.find({}).exec(function(err, book){
+//   for (var i=0; i<book.length; i++){
+//     if (book[i].pages >200 && book[i].pages<500){
+//       console.log(book[i].title)
+//     }
+//   }
+// }) || db.books.find({pages: {$gt : 200, $lt : 500}})
 
 //2. Find books whose rating is less than 5, and sort by the author's name
 
+// Book.find({}).sort('author').exec(function(err, docs) {
+// for (let i=0; i<docs.length; i++){
+//   if(docs[i].rating < 5){
+//     console.log(docs[i].author+'`s '+docs[i].title +' '+ docs[i].rating)
+//   }
+// }
+// });
+
 //3. Find all the Fiction books, skip the first 2, and display only 3 of them 
 
+// Book.find({genres: 'Fiction'}).skip(2).limit(3).exec(function(err, docs) {
+// for (let i=0; i<docs.length; i++){
+//     console.log(docs[i].title +' '+ docs[i].genres)
+// }
+// });
 
 /*People
 ----------------------*/
 //1. Find all the people who are tall (>180) AND rich (>30000)
 
+// Person.find({}).exec(function(err, person){
+//   for (var i=0; i<person.length; i++){
+//     if (person[i].height >180 && person[i].salary>30000){
+//       console.log(person[i].height  + ' ' + person[i].salary)
+//     }
+//   }
+//   }) 
+
 //2. Find all the people who are tall (>180) OR rich (>30000)
+
+// Person.find({}).exec(function(err, person){
+//   for (var i=0; i<person.length; i++){
+//     if (person[i].height >180 && person[i].salary>30000){
+//       console.log(person[i].height  + ' ' + person[i].salary)
+//     }
+//   }
+//   })  || db.people.find({ $or: [{height:{$gt:18}}, {salary:{$gt:30000}}] })
 
 //3. Find all the people who have grey hair or eyes, and are skinny (<70)
 
+// Person.find({}).exec(function(err, person){
+//   for (var i=0; i<person.length; i++){
+//     if (person[i].weight < 70){
+//       if (person[i].hair === 'grey' || person[i].eyes === 'grey'){
+//         console.log(person[i])
+//       }
+//     }
+//   }
+//   })
+
 //4. Find people who have at least 1 kid with grey hair
 
+// Person.find({}).exec(function(err, person){
+//   for (var i=0; i<person.length; i++){
+//     if (person[i].kids.length > 0){
+//       for (let j=0; j<person[i].kids.length; j++){
+//         if (person[i].kids[j].hair === 'grey'){
+//           console.log(person[i])
+//         }
+//       }
+//     }
+//   }
+//   })
+
 //5. Find all the people who have at least one overweight kid, and are overweight themselves (>100)
+
+
+// Person.find({}).exec(function(err, person){
+//   for (var i=0; i<person.length; i++){
+//     if (person[i].kids.length > 0 && person[i].weight > 100){
+//       for (let j=0; j<person[i].kids.length; j++){
+//         if (person[i].kids[j].weight> 100){
+//           console.log(person[i])
+//         }
+//       }
+//     }
+//   }
+//   })
